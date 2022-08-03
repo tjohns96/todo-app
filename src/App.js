@@ -30,7 +30,7 @@ function App() {
                     handleProjectSubmit(e);
                 }}>
                     <fieldset>
-                        <legend>Submit a project</legend>
+                        <legend>Submit a project!</legend>
                         <TextField label='Project' onChange={handleProjectChange} value= {currInpVal}></TextField>
                     </fieldset>
                 </form>
