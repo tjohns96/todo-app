@@ -1,8 +1,13 @@
-import { IconButton, List } from "@mui/material";
-import { Add } from "@mui/icons-material";
+import { IconButton, List, ListItemText } from "@mui/material";
+import AddIcon from "@mui/icons-material/Add";
 
-export default function Project(){
+export default function Project(props) {
+  return (
     <List>
-        <IconButton><Add/></IconButton>
+      <IconButton>
+        <AddIcon />
+      </IconButton>
+      <ListItemText id={props.id} primary={props.name} />
     </List>
+  );
 }
