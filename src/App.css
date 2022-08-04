@@ -1,3 +1,21 @@
 .App {
   text-align: center;
 }
+.header{
+  padding-top: 30px;
+  margin-bottom: 30px;
+}
+.project-area{
+  width: 100%;
+}
+.project{
+  position: relative;
+}
+.expand-icon{
+  position: absolute;
+  right: 32px;
+}
+.edit-icon{
+  position: absolute;
+  right: 22px;
+}
