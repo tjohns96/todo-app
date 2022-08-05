@@ -28,7 +28,7 @@ function App() {
   }, [project]);
   return (
     <Grid container>
-      <Grid item xs={3}>
+      <Grid item xs={12} lg={3}>
         <Grid
           container
           direction="column"
@@ -55,7 +55,7 @@ function App() {
           <ProjectArea projects={projects}></ProjectArea>
         </Grid>
       </Grid>
-      <Grid item xs={9}></Grid>
+      <Grid item xs={0} lg={9}></Grid>
     </Grid>
   );
 }

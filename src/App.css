@@ -10,12 +10,27 @@
 }
 .project{
   position: relative;
+  font-size: 1rem;
+  font-weight: bold;
 }
-.expand-icon{
-  position: absolute;
-  right: 32px;
+.project>span{
+  width: 100%;
 }
-.edit-icon{
-  position: absolute;
-  right: 22px;
+.add-icon:hover{
+  color: blue;
+}
+.delete-icon:hover{
+  color: red;
+}
+.task-name{
+  background-color: white;
+  font-size: 1rem;
+  width: 100%;
+  border: none;
+  outline: none;
+  pointer-events: none;
+}
+.task-name:focus{
+    border-bottom: 1px solid gray;
+    pointer-events: all;
 }

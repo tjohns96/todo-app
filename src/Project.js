@@ -9,16 +9,41 @@ import {
   ListItemIcon,
   ListItemAvatar,
 } from "@mui/material";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import AddIcon from "@mui/icons-material/Add";
 import ExpandMore from "@mui/icons-material/ExpandMore";
 import ExpandLess from "@mui/icons-material/ExpandLess";
-import Edit from "@mui/icons-material/Edit";
+import Task from "./Task";
+import DeleteIcon from "@mui/icons-material/Delete";
+import uniqid from "uniqid";
+import TaskArea from "./TaskArea";
 
 export default function Project(props) {
   const [expanded, setExpanded] = useState(false);
+  const [task, setTask] = useState({ id: "", name: "" });
+  const [tasks, setTasks] = useState([]);
+  useEffect(() => {
+    if (task.name) {
+      setTasks((arr) => [...arr, task]);
+    }
+    setExpanded(props.openProject === props.index);
+  }, [task, props.openProject]);
   function handleExpandClick() {
-    setExpanded(!expanded);
+    props.chooseOpenProject(props.index);
+  }
+  function handleDeleteClick(e) {
+    e.stopPropagation();
+    const project = e.target.closest(".project");
+    removeAllChildNodes(project.parentNode);
+  }
+  function removeAllChildNodes(parent) {
+    while (parent.firstChild) {
+      parent.removeChild(parent.firstChild);
+    }
+    parent.parentNode.removeChild(parent);
+  }
+  function handleAddClick(e) {
+    e.stopPropagation();
   }
   return (
     <List className="project">
@@ -27,29 +52,16 @@ export default function Project(props) {
         className="project"
         key={props.id}
       >
-        <IconButton
-          onClick={(e) => {
-            e.stopPropagation();
-            console.log("Hi");
-          }}
-        >
+        <IconButton className="delete-icon" onClick={handleDeleteClick}>
+          <DeleteIcon />
+        </IconButton>
+        <IconButton className="add-icon" onClick={handleAddClick}>
           <AddIcon />
         </IconButton>
         <span>{props.name}</span>
-        {expanded ? (
-          <ExpandLess className="expand-icon" />
-        ) : (
-          <ExpandMore className="expand-icon" />
-        )}
+        {expanded ? <ExpandLess /> : <ExpandMore />}
       </ListItemButton>
-      <Collapse in={expanded} timeout="auto">
-        <ListItem sx={{ p: 0, pl: 8 }}>
-          <ListItemText primary="First task" />
-          <IconButton className="edit-icon">
-            <Edit />
-          </IconButton>
-        </ListItem>
-      </Collapse>
+      <TaskArea tasks={tasks} expanded={expanded} />
     </List>
   );
 }
