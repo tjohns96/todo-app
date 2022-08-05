@@ -34,3 +34,33 @@
     border-bottom: 1px solid gray;
     pointer-events: all;
 }
+.popup{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.form-container{
+  position: relative;
+  background-color: white;
+  width: 600px;
+  padding: 32px;
+}
+.close-task-create{
+  position: absolute;
+  top: -77px;
+  right: -592px;
+}
+.close-task-create:hover{
+  color: red;
+}
+.create-task-btn{
+  position: absolute;
+  right: -450px;
+  top: 16px;
+}
